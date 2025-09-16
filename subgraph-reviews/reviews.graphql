@@ -1,8 +1,12 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key"])
 
-type Location @key(fields: "id", resolvable: false) {
+type Location @key(fields: "id") {
   id: ID!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this location"
+  reviewsForLocation: [Review]!
 }
 
 type Query {
